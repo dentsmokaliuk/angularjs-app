@@ -1,0 +1,1 @@
+var authorsApp = angular.module("authorsApp", []);

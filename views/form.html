@@ -1,0 +1,29 @@
+<div class= "well">
+    <h3>Данные об авторе</h3>
+
+    <div class="form-group">
+        <label>Фамилия*:</label>
+        <input class="form-control" ng-model="author.familyName" required/>
+    </div>
+    <div class="form-group">
+        <label>Имя*:</label>
+        <input class="form-control" ng-model="author.name" required/>
+    </div>
+    <div class="form-group">
+        <label>Отчество*:</label>
+        <input class="form-control" ng-model="author.lastName" required/>
+    </div>
+    <div class="form-group">
+        <label>Дата рождения:</label>
+        <input class="form-control" type="date" ng-model="author.birth"/>
+    </div>
+</div>
+
+<div class="alert alert-xs alert-warning" ng-show="formAuthor.$invalid" role="alert">
+    <span>Заполните, пожалуйста, <strong>все обязательные</strong> поля!</span>
+</div>
+
+<div class="btn-group control__btn">
+    <button type="submit" class="btn btn-primary" ng-disabled="formAuthor.$invalid" >Сохранить</button>
+    <button type="button" class="btn btn-primary" ng-click="cancelEdit()">Отмена</button>
+</div>

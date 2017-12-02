@@ -1,0 +1,82 @@
+<div class="panel-body">
+
+    <div class="well" ng-cloak>
+        <div class="form-group">
+            <label>Поиск книг по названию</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </span>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" ng-model="titleOfBook" ng-change="findBook(titleOfBook)">
+            </div>
+
+            <div ng-show="exsist">
+                <h4>Круто! Книга <strong>"{{titleOfBook}}"</strong> есть в нашей базе!</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="well" ng-repeat="author in authors" ng-cloak>
+
+        <h2>{{author.familyName}} {{author.name}} {{author.lastName}}</h2>
+
+        <div class="">
+            <p><strong>Дата рождения: </strong>{{author.birth | date: "dd.MM.yyyy"}}</p>
+        </div>
+
+        <div class="booksRow">
+
+            <div class="booksRow__text">
+                <strong>Книги:</strong>
+            </div>
+
+            <div>
+                <div class="btn-group ">
+                    <button class="btn btn-primary show" data-tab="tabs-{{$index}}">
+                        <span class="lb-md">
+                            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="editOrCreateBook(author)">
+                        <span class="lb-md">
+                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                             <span>Добавить книгу</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs tabs-{{$index}} tabs__hide">
+
+            <ul class="tabs__caption">
+                <li ng-repeat="book in books | filter: { authorId : author.id}">{{book.title}}</li>
+            </ul>
+
+            <div class="tabs__content" ng-repeat="book in books| filter: { authorId : author.id}">
+
+                <p><strong>Жанр:</strong> {{book.genre}}</p>
+                <p><strong>Количество страниц:</strong> {{book.pages}}</p>
+                <div class="btn-group control__edit">
+                    <button type="button" class="btn btn-primary" ng-click="editOrCreateBook(author, book)">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="deleteBook(book)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="btn-group control__tab">
+            <button class="btn btn-primary" ng-click="editOrCreateAuthor(author)">Редактировать</button>
+            <button class="btn btn-primary" ng-click="deleteAuthor(author)">Удалить</button>
+        </div>
+
+    </div>
+
+    <div class="addAuthor">
+        <button class="btn btn-primary btn-lg" ng-click="editOrCreateAuthor()">Добавить автора</button>
+    </div>
+</div>

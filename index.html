@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="authorsApp">
+<head>
+    <meta charset="utf-8">
+	<title>TLOOA</title>
+    <link rel="stylesheet" href="libraries/Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libraries/Bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="authorsCtrl">
+    <div class="container-fluid">
+        <div class="panel panel-info">
+            <div class="panel-heading text-center">
+                <h1>THE LIST OF OUR AUTHORS</h1>
+            </div>
+            <ng-include src="'views/authors.html'" ng-show="view == 'main'"></ng-include>
+            <ng-include src="'views/author-add.html'" ng-show="view == 'add'"></ng-include>
+            <ng-include src="'views/author-edit.html'" ng-show="view == 'edit'"></ng-include>
+            <ng-include src="'views/books-edit.html'" ng-show="view == 'books-edit'"></ng-include>
+        </div>
+    </div>
+</body>
+<script src="libraries/AngularJS/angular.js"></script>
+<script src="libraries/AngularJS/angular_resource.js"></script>
+<script src="libraries/jquery-3.2.1.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/services.js"></script>
+</html>
